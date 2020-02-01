@@ -1,0 +1,88 @@
+/* add css styles here (optional) */
+
+.test {
+  display: inline-block;
+  margin: 2em auto;
+  border: 2px solid #000;
+  font-size: 2em;
+}
+input {
+  padding: 5px;
+  line-height: 1.6;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #bfb9b9;
+}
+.multiSelect {
+  cursor: pointer;
+  position: relative;
+  width:inherit;
+}
+.multiSelectBox {
+  display: flex;
+  position: relative;
+}
+
+.multiSelectBoxContents {
+  border: 1px solid lightgray;
+  min-height: 30px;
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding-right: 20px;
+}
+.multiSelectBoxContentItem {
+  margin: 2px;
+  /*border: 1px solid lightgray;*/
+  padding: 3px 10px;
+  position: relative;
+  display: flex;
+  border-radius: 50px;
+  background: #f3f0ea;
+}
+.multiSelectBoxContentItem span {
+  flex-grow: 1;
+  top: 2px;
+  position: relative;
+}
+.multiSelectBoxContentItem label {
+  cursor: pointer;
+  margin-left: 5px;
+  font-weight: bolder;
+  color: gray;
+}
+.multiSelectArrow {
+  position: absolute;
+  right: 5px;
+  padding: 5px 0;
+}
+.multiSelectItems {
+  max-height: 400px;
+  overflow: auto;
+  z-index: 1001;
+  border: 1px solid lightgray;
+  /* box-shadow: 2px 2px 2px 0 lightgray; */
+  position: absolute;
+  width: inherit;
+  background: white;
+  /*opacity: 0;*/
+  visibility: hidden;
+}
+.multiSelectItems.active {
+  /*opacity: 1;*/
+  visibility: visible;
+}
+
+.multiSelectItems > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.multiSelectItems > ul li {
+  padding: 10px;
+}
+
+.multiSelectItems > ul li:hover,
+.multiSelectItemfocus {
+  background-color: #dbdbe4;
+}

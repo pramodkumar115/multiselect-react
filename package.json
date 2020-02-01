@@ -6,6 +6,7 @@
   "author": "pramodkumar115",
   "license": "MIT",
   "repository": "pramodkumar115/multiselect-react",
+  "private": false,
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

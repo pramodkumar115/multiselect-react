@@ -5,7 +5,7 @@
 import * as React from 'react'
 import styles from './styles.css'
 
-export type Props = { valueList: any[], displayField: string, onChange: Function }
+export type Props = { valueList: any[], displayField: string, selectedValues?: any[], onChange: Function }
 export type State = { items: any[], filterInput: string, 
   selectedValues: Set<any>, currentFocus: number }
 export default class MultiSelect extends React.Component<Props, State> {
@@ -19,10 +19,23 @@ export default class MultiSelect extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
+    let selectedValues = new Set<any>()
+    if(props.selectedValues != null) {
+      props.selectedValues.forEach(s => {
+          props.valueList.forEach(v => {
+            if(v[props.displayField] === s[props.displayField]) {
+              selectedValues.add(v);
+            }
+          })
+
+      })
+    }
+    console.log("selectedValueList::", selectedValues);
     this.state = {
-      items: this.props.valueList,
+      items: selectedValues.size > 0 ? 
+      this.props.valueList.filter(i => !selectedValues.has(i)): this.props.valueList,
       filterInput: "",
-      selectedValues: new Set<any>(),
+      selectedValues:  selectedValues,
       currentFocus: -1
     }
   }
@@ -112,7 +125,8 @@ export default class MultiSelect extends React.Component<Props, State> {
     const { selectedValues } = this.state;
     selectedValues.add(selected)
     this.setState({
-      selectedValues: selectedValues
+      selectedValues: selectedValues,
+      items: this.props.valueList.filter(i => !selectedValues.has(i))
     }, this.props.onChange(Array.from(this.state.selectedValues)));
     this.setState({currentFocus: -1})
   }
@@ -120,7 +134,8 @@ export default class MultiSelect extends React.Component<Props, State> {
     const { selectedValues } = this.state;
     selectedValues.delete(selected)
     this.setState({
-      selectedValues: selectedValues
+      selectedValues: selectedValues,
+      items: this.props.valueList.filter(i => !selectedValues.has(i))
     }, this.props.onChange(Array.from(this.state.selectedValues)));
   }
   render() {

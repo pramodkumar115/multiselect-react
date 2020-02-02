@@ -1,7 +1,7 @@
 {
   "name": "@pramodkumar115/multiselect-react",
-  "version": "1.0.0",
-  "description": "Multiselect dropdown for react using material ui",
+  "version": "1.0.1",
+  "description": "Multiselect dropdown for react",
   "homepage": "https://pramodkumar115.github.io/multiselect-react",
   "author": "pramodkumar115",
   "license": "MIT",

@@ -16,7 +16,8 @@ input {
 .multiSelect {
   cursor: pointer;
   position: relative;
-  width:inherit;
+  width: -webkit-fill-available;
+  
 }
 .multiSelectBox {
   display: flex;
@@ -32,13 +33,14 @@ input {
   padding-right: 20px;
 }
 .multiSelectBoxContentItem {
-  margin: 2px;
+  margin: 1px;
   /*border: 1px solid lightgray;*/
   padding: 3px 10px;
   position: relative;
   display: flex;
-  border-radius: 50px;
-  background: #f3f0ea;
+  border-radius: 5px;
+  background: #5c67e6;
+  color: white;
 }
 .multiSelectBoxContentItem span {
   flex-grow: 1;
@@ -46,10 +48,10 @@ input {
   position: relative;
 }
 .multiSelectBoxContentItem label {
-  cursor: pointer;
-  margin-left: 5px;
-  font-weight: bolder;
-  color: gray;
+  margin-left: 10px;
+  color: white;
+  font-size: 12px;
+  margin-top: 2px;
 }
 .multiSelectArrow {
   position: absolute;

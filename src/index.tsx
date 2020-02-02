@@ -101,6 +101,9 @@ export default class MultiSelect extends React.Component<Props, State> {
   }
   filterRecords = (e: React.KeyboardEvent | React.MouseEvent | React.ChangeEvent) => {
     const value = ((e.target) as any).value
+    const valueList = this.state.selectedValues.size > 0 ? 
+    this.props.valueList.filter(i => !this.state.selectedValues.has(i))
+    : this.props.valueList
     if (this.state.filterInput != value) {
       this.setState({currentFocus: -1})
       this.setState({
@@ -108,14 +111,16 @@ export default class MultiSelect extends React.Component<Props, State> {
       }, () => {
         if (this.state.filterInput != null) {
           this.setState({
-            items: this.props.valueList.filter(v =>
+            items: valueList.filter(v =>
               (v[this.props.displayField] as string)
                 .toLowerCase()
                 .indexOf(this.state.filterInput.toLowerCase()) != -1)
           })
         } else {
+          console.log("this.state.selectedValues::", this.state.selectedValues)
+          console.log("this.props.valueList::", this.props.valueList)
           this.setState({
-            items: this.props.valueList
+            items: valueList
           })
         }
       })
